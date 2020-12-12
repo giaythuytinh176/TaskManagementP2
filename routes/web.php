@@ -20,14 +20,14 @@ Route::get('/', function () {
 
 Route::group(["prefix" => "manage"], function () {
 
-    Route::get("index", "\App\Http\Controllers\MainController@ShowList");
-    Route::get("create", "\App\Http\Controllers\MainController@create");
-    Route::post("store", "\App\Http\Controllers\MainController@store");
-    Route::get("{id}/show", "\App\Http\Controllers\MainController@ShowId");
-    Route::get("{id}/edit", "\App\Http\Controllers\MainController@editID");
-    Route::patch("{id}/update", "\App\Http\Controllers\MainController@updateId");
-    Route::delete("{id}", "\App\Http\Controllers\MainController@deleteId");
-
-
+    Route::group(["namespace" => "\\App\\Http\\Controllers\\"], function () {
+        Route::get("index", "MainController@ShowList");
+        Route::get("create", "MainController@create");
+        Route::post("store", "MainController@store");
+        Route::get("{id}/show", "MainController@ShowId");
+        Route::get("{id}/edit", "MainController@editID");
+        Route::patch("{id}/update", "MainController@updateId");
+        Route::delete("{id}", "MainController@deleteId");
+    });
 
 });

@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(["prefix" => "manage"], function () {
+
+    Route::get("index", "\App\Http\Controllers\MainController@ShowList");
+    Route::get("create", "\App\Http\Controllers\MainController@create");
+    Route::post("store", "\App\Http\Controllers\MainController@store");
+    Route::get("{id}/show", "\App\Http\Controllers\MainController@ShowId");
+    Route::get("{id}/edit", "\App\Http\Controllers\MainController@editID");
+    Route::patch("{id}/update", "\App\Http\Controllers\MainController@updateId");
+    Route::delete("{id}", "\App\Http\Controllers\MainController@deleteId");
+
+
+
+});
